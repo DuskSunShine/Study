@@ -1,19 +1,24 @@
 package com.hhjt.study;
 
+import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.hhjt.study.IViewModel.StudyViewModel;
 import com.hhjt.study.retrofit.InitData;
+import com.hhjt.study.retrofit.User;
 
 public class MainActivity extends AppCompatActivity {
 
     private StudyViewModel studyViewModel;
     private TextView text;
+    private int count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +40,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        studyViewModel.setUserId(count);
+        studyViewModel.getUserLiveData().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(@Nullable User user) {
+                text.setText(user.toString());
+            }
+        });
+
+        /**
+         *
+         */
         getLifecycle().addObserver(new StudyLifecycle());
     }
-
+    public void click(View view) {
+        count++;
+        studyViewModel.setUserId(count);
+    }
 
 
     @Override

@@ -2,7 +2,9 @@ package com.hhjt.study.repository;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.persistence.room.Room;
 
+import com.hhjt.study.App;
 import com.hhjt.study.retrofit.ApiManager;
 import com.hhjt.study.retrofit.InitData;
 import com.hhjt.study.retrofit.User;
@@ -39,6 +41,7 @@ public class InitDataRepository {
         //我们这里假设通过网络请求我们拿到需要的User
         User user=new User(id,"user_name"+id);
         users.setValue(user);
+        App.getApp().getDatabase().userDao().save(user);
         return users;
     }
 

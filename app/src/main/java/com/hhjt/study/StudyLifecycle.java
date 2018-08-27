@@ -43,6 +43,7 @@ public class StudyLifecycle implements LifecycleObserver{
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     public void onDestroy(){
         Logg.i("onDestroy");
+
     }
 
 }

@@ -9,6 +9,7 @@ import android.arch.lifecycle.Transformations;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.Nullable;
 
+import com.hhjt.study.App;
 import com.hhjt.study.repository.InitDataRepository;
 import com.hhjt.study.retrofit.InitData;
 import com.hhjt.study.retrofit.User;
@@ -29,6 +30,7 @@ public class StudyViewModel extends ViewModel {
     private InitDataRepository initDataRepository = new InitDataRepository();
     private LiveData<User>  userLiveData;
     private MutableLiveData<Integer> userId;
+
 
     public LiveData<User> getUserLiveData() {
 

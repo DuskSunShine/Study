@@ -1,10 +1,11 @@
 package com.hhjt.study.retrofit;
 
+
+
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
 public class InitData {
 
 
@@ -14,6 +15,7 @@ public class InitData {
      * count : 0
      * data : [{"createTimeStr":"2018-04-20 15:43:10","updateTimeStr":null,"analysis":{"createTime":1524210102000,"createrId":"4da698c87bf94a2c8ede341285cfc4","updateTime":null,"updateId":null,"remark":"","serverId":"ED4DB5D0929A430FA3A97BC6E1843C0A","serverName":"123算法服务器","serverType":"analysis_server","serverCode":null,"serverIp":"192.168.3.123","serverPort":"6666","userName":"","password":"","status":"1"},"accessName":"一号门","accessAddress":"","setUpTimeStr":null,"manufacturerName":"海康","serverName":null,"port":"554","password":"hk123456","status":"1","cameraId":"D651A23F097A4C9990DDAD1652FEE706","analysisServer":"ED4DB5D0929A430FA3A97BC6E1843C0A","userName":"admin","cameraType":"distinguish_camera","ip":"192.168.3.64","rtspAddress":"rtsp://admin:hk123456@192.168.3.64:554/Streaming/Channels/101?transportmode=unicast&amp;profile=Profile_1","accessId":"10001","manufacturer":"hIkvision","cameraCode":"fff","cameraName":"算法办公室","createrId":"4da698c87bf94a2c8ede341285cfc4","updateId":null,"remark":""}]
      */
+
 
     @SerializedName("code")
     private String code;
@@ -28,6 +30,8 @@ public class InitData {
 
         return new Gson().fromJson(str, InitData.class);
     }
+
+
 
     public String getCode() {
         return code;

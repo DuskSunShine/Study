@@ -3,6 +3,7 @@ package com.hhjt.study;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
+import com.hhjt.study.factory.Android;
 import com.hhjt.study.room_orm.IDatabase;
 
 import me.logg.Logg;

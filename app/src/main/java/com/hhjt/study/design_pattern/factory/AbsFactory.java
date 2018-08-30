@@ -1,4 +1,4 @@
-package com.hhjt.study.factory;
+package com.hhjt.study.design_pattern.factory;
 
 /**
  * Created by SCY on 2018/8/29 at 11:36.

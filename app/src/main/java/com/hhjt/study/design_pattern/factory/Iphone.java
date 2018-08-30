@@ -1,4 +1,4 @@
-package com.hhjt.study.factory;
+package com.hhjt.study.design_pattern.factory;
 
 import me.logg.Logg;
 

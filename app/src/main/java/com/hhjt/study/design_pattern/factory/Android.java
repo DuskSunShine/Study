@@ -1,4 +1,4 @@
-package com.hhjt.study.factory;
+package com.hhjt.study.design_pattern.factory;
 
 import me.logg.Logg;
 
@@ -7,7 +7,7 @@ import me.logg.Logg;
  * Created by SCY on 2018/8/29 at 11:37.
  */
 
-public class Computer {
+public class Android {
     private String words;
 
     public String getWords() {
@@ -18,23 +18,22 @@ public class Computer {
         this.words = words;
     }
 
-    public Computer(String words) {
+    public Android(String words) {
         this.words = words;
     }
 
     @Override
     public String toString() {
-        return "Computer{" +
+        return "Android{" +
                 "words='" + words + '\'' +
                 '}';
     }
-
-    public void produceComputer(){
+    public void produceAndroid(){
         long l = System.currentTimeMillis();
         try {
             Thread.sleep((long) Math.random());
             long l1 = System.currentTimeMillis();
-            Logg.i("computer生产完毕，花费时间"+(l1-l));
+            Logg.i("Android生产完毕，花费时间"+(l1-l));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

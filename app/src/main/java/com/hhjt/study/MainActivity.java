@@ -1,18 +1,16 @@
 package com.hhjt.study;
 
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.hhjt.study.IViewModel.StudyViewModel;
-import com.hhjt.study.factory.FactoryActivity;
+import com.hhjt.study.design_pattern.factory.FactoryActivity;
 import com.hhjt.study.retrofit.InitData;
 import com.hhjt.study.retrofit.User;
 

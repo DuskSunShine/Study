@@ -16,6 +16,7 @@ import java.util.EnumSet;
 import me.logg.Logg;
 
 public class FactoryActivity extends AppCompatActivity {
+
     TextView textView;
     RxObserver rxObserver;
     private RxObservable iObservable;

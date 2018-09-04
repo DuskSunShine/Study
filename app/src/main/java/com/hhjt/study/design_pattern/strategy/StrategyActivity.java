@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import com.hhjt.study.R;
 
+import java.io.IOException;
+import java.net.Socket;
+import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 import me.logg.Logg;
@@ -30,6 +33,18 @@ public class StrategyActivity extends AppCompatActivity {
         Logg.i("普通会员："+price2.finalPrice(100));
          price3=new Price(AbsPriceStrategy.STRATEGY.ORIGINAL);
         Logg.i("非会员："+price3.finalPrice(100));
+        try {
+            Socket socket=new Socket("192.168.2.2",8080);
+            SocketChannel channel = socket.getChannel();
+            ByteBuffer byteBuffer=ByteBuffer.allocate(128);
+            ByteBuffer byteBuffer2=ByteBuffer.allocate(1024);
+            ByteBuffer byteBuffers[]={byteBuffer,byteBuffer2};
+            channel.read(byteBuffers);
+            channel.write(byteBuffers);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void price(View view) {

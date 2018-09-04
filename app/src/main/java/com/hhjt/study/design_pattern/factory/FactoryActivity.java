@@ -11,6 +11,8 @@ import com.hhjt.study.design_pattern.observer.RxObservable;
 import com.hhjt.study.design_pattern.observer.RxObserver;
 import com.hhjt.study.design_pattern.strategy.StrategyActivity;
 
+import java.util.EnumSet;
+
 import me.logg.Logg;
 
 public class FactoryActivity extends AppCompatActivity {

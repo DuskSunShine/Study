@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".design_pattern.factory.FactoryActivity" />
-        <activity android:name=".design_pattern.strategy.StrategyActivity"></activity>
+        <activity android:name=".design_pattern.strategy.StrategyActivity" />
+        <activity android:name=".custom_view.SafeViewActivity"></activity>
     </application>
 
 </manifest>

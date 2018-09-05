@@ -26,7 +26,6 @@ public class FactoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factory);
         textView =findViewById(R.id.textView);
-
         /**
          * 观察者模式
          */

@@ -2,6 +2,7 @@ package com.hhjt.study.custom_view;
 
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Camera;
@@ -16,6 +17,7 @@ import android.graphics.Shader;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,12 +26,13 @@ import android.view.animation.LinearInterpolator;
 
 import com.hhjt.study.R;
 
+
 /**
  * Created by SCY on 2018/9/4 at 16:27.
  */
 
 public class SafeView extends View {
-
+    private static final String TAG="SafeView";
     private Paint mPaint;
     private int mHeight;
     private int mWidth;
@@ -51,9 +54,8 @@ public class SafeView extends View {
         return safeText;
     }
 
-    public SafeView setText(String safeText) {
+    public void setText(String safeText) {
         this.safeText = safeText;
-        return this;
     }
 
     public SafeView(Context context) {
@@ -86,35 +88,42 @@ public class SafeView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int width = measureSize(widthMeasureSpec)+ getPaddingLeft() + getPaddingRight();
-        int height = measureSize(heightMeasureSpec)+ getPaddingBottom() + getPaddingTop();
+        Log.e(TAG,"onMeasure");
+        int width = measureSize(widthMeasureSpec);
+        int height = measureSize(heightMeasureSpec);
         setMeasuredDimension(width, height);
     }
 
-    /**
-     * 测量宽高
-     *
-     * @param measureSpec
-     * @return view的测量值
-     */
-    private int measureSize(int measureSpec) {
-        int result;
-        int measureSize = MeasureSpec.getSize(measureSpec);
-        int mode = MeasureSpec.getMode(measureSpec);
-        if (mode == MeasureSpec.EXACTLY) {
-            result = measureSize;
-        } else {
-            result = 200;
-            if (mode == MeasureSpec.AT_MOST) {
-                result = Math.min(result, measureSize);
-            }
-        }
-        return result;
+
+    @Override
+    protected void onSizeChanged(int newWidth, int newHeight, int oldWidth, int oldHeight) {
+        super.onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
+        Log.e(TAG,"onSizeChanged");
+        mWidth = newWidth;
+        mHeight = newHeight;
+        mCy = Math.min(mWidth, mHeight);
+        OFFSET = (int) (mCy * 0.25);
     }
+
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        Log.e(TAG,"onLayout");
+        if (changed) {
+            //layout();
+            Log.e(TAG,"onLayout changed");
+            //layout(300,300,300,300);
+        }else {
+            Log.e(TAG,"onLayout not changed");
+        }
+    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        Log.e(TAG,"onDraw");
         rotateCanvas(canvas);
         mPaint.setShader(null);
         canvas.drawColor(0xff1782dd);
@@ -135,14 +144,27 @@ public class SafeView extends View {
 
     }
 
-    @Override
-    protected void onSizeChanged(int newWidth, int newHeight, int oldWidth, int oldHeight) {
-        super.onSizeChanged(newWidth, newHeight, oldWidth, oldHeight);
-        mWidth = newWidth;
-        mHeight = newHeight;
-        mCy = Math.min(mWidth, mHeight);
-        OFFSET = (int) (mCy * 0.25);
+    /**
+     * 测量宽高
+     *
+     * @param measureSpec
+     * @return view的测量值
+     */
+    private int measureSize(int measureSpec) {
+        int result;
+        int measureSize = MeasureSpec.getSize(measureSpec);
+        int mode = MeasureSpec.getMode(measureSpec);
+        if (mode == MeasureSpec.EXACTLY) {        //确定大小,希望是measureSize
+            result = measureSize;
+        } else {
+            result = 200;
+            if (mode == MeasureSpec.AT_MOST) {//最大大小,希望是measureSize
+                result = Math.min(result, measureSize);
+            }
+        }
+        return result;
     }
+
 
     /**
      * 旋转画布
@@ -154,6 +176,7 @@ public class SafeView extends View {
         camera.save();
         camera.rotateX(canvasRotateX);
         camera.rotateY(canvasRotateY);
+        //camera.rotateZ(canvasRotateX);
         camera.getMatrix(matrix);
         camera.restore();
         int matrixCenterX = mCy / 2;
@@ -163,6 +186,7 @@ public class SafeView extends View {
         canvas.concat(matrix);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float x = event.getX();
@@ -244,8 +268,8 @@ public class SafeView extends View {
         } else if (perY < -1f) {
             perY = -1f;
         }
-        canvasRotateY = 30 * perX;
-        canvasRotateX = -(30 * perY);
+        canvasRotateY = 60 * perX;
+        canvasRotateX = -(60 * perY);
     }
 
     /**

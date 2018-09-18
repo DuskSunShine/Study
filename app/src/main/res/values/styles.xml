@@ -38,6 +38,6 @@
         <attr name="hour" format="integer"/>
         <attr name="min" format="integer"/>
         <attr name="second" format="integer"/>
-
+        <attr name="systemTime" format="boolean"/>
     </declare-styleable>
 </resources>

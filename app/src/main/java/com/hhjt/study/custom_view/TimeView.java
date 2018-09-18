@@ -100,6 +100,8 @@ public class TimeView extends View{
     private int hour;
     private int min;
     private int second;
+
+    private boolean isSystemTime=true;//是否采用系统时间
     /***********************************************************/
 
     public TimeView(Context context) {
@@ -140,6 +142,7 @@ public class TimeView extends View{
         hour= typedArray.getInt(R.styleable.TimeView_hour,0);
         min= typedArray.getInt(R.styleable.TimeView_min,0);
         second= typedArray.getInt(R.styleable.TimeView_second,0);
+        isSystemTime=typedArray.getBoolean(R.styleable.TimeView_systemTime,true);
         typedArray.recycle();
 
         paint=new Paint();
@@ -339,9 +342,6 @@ public class TimeView extends View{
      * @param second
      */
     public void setTime(int hour, int min, int second) {
-        this.hour=hour;
-        this.min=min;
-        this.second=second;
         if (hour<0||hour>12){
             throw new IllegalStateException("请按照12小时制设置");
         }
@@ -357,12 +357,18 @@ public class TimeView extends View{
         invalidate();//重绘控件
     }
     private void setDefaultTime() {
-        mSecondDegree=  getNowTime(S)*6f;
-        mMinDegree=  (getNowTime(M)+getNowTime(S)*1.0f/60f)*6f;
-        if (getNowTime(H)>12){
-            mHourDegree=(getNowTime(H)-12)*30f;
+        if (isSystemTime) {
+            mSecondDegree = getNowTime(S) * 6f;
+            mMinDegree = (getNowTime(M) + getNowTime(S) * 1.0f / 60f) * 6f;
+            if (getNowTime(H) > 12) {
+                mHourDegree = (getNowTime(H) - 12 + getNowTime(M) * 1.0f / 60f + getNowTime(S) * 1.0f / 3600f) * 30f;
+            }
+            mHourDegree = (getNowTime(H) + getNowTime(M) * 1.0f / 60f + getNowTime(S) * 1.0f / 3600f) * 30f;
+        }else {
+            mMinDegree = (min + second * 1.0f/60f) *6f;
+            mHourDegree = (hour + min * 1.0f/60f + second * 1.0f/3600f)*30f;
+            mSecondDegree = second * 6f;
         }
-        mHourDegree=  (getNowTime(H)+getNowTime(M)*1.0f/60f+getNowTime(S)*1.0f/3600f)*30f;
     }
 
     private float getNowTime(String s){

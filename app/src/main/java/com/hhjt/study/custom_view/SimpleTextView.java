@@ -1,5 +1,6 @@
 package com.hhjt.study.custom_view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -7,9 +8,14 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.text.Layout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 
 import com.hhjt.study.R;
 
@@ -28,13 +34,14 @@ public class SimpleTextView extends View{
 
     private int backgroundColor;
 
-    private String text;
+    private String text="";
 
     private Rect mRect;
 
     private int height;
 
     private int width;
+    private GestureDetector gestureDetector;
 
     public SimpleTextView(Context context) {
         this(context,null);
@@ -48,14 +55,13 @@ public class SimpleTextView extends View{
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleTextView);
 
-        textColor=typedArray.getColor(R.styleable.SimpleTextView_textColor, Color.BLACK);
+        textColor=typedArray.getColor(R.styleable.SimpleTextView_simpleTextColor, Color.BLACK);
         backgroundColor=typedArray.getColor(R.styleable.SimpleTextView_backgroundColor, Color.WHITE);
-        text=typedArray.getString(R.styleable.SimpleTextView_text);
-        textSize= (int) typedArray.getDimension(R.styleable.SimpleTextView_textSize,14);
-
+        text=typedArray.getString(R.styleable.SimpleTextView_simpleText);
+        textSize=  typedArray.getDimensionPixelSize(R.styleable.SimpleTextView_simpleTextSize, (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,14,getResources().getDisplayMetrics()));
         init();
         typedArray.recycle();
-
+        gestureDetector = new GestureDetector(context, new GestureImpl());
     }
 
     private void init(){
@@ -69,9 +75,22 @@ public class SimpleTextView extends View{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        height=MeasureSpec.getSize(heightMeasureSpec);
-        width=MeasureSpec.getSize(widthMeasureSpec);
-        setMeasuredDimension(width,height);
+       int height=MeasureSpec.getSize(heightMeasureSpec);
+       int width=MeasureSpec.getSize(widthMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        if (widthMode==MeasureSpec.EXACTLY){
+            this.width=width;
+        }else {//warp_content没有设置一个具体的值，就初始化一个值
+            this.width= mRect.width();
+        }
+        if (heightMode==MeasureSpec.EXACTLY){
+            this.height=height;
+        }else {//warp_content
+            this.height= mRect.height()+mRect.bottom;
+        }
+        setMeasuredDimension(this.width,this.height);
+
     }
 
 
@@ -81,6 +100,13 @@ public class SimpleTextView extends View{
         mPaint.setColor(backgroundColor);
         canvas.drawRect(0,0,getMeasuredWidth(),getMeasuredHeight(),mPaint);
         mPaint.setColor(textColor);
-        canvas.drawText(text,0,);
+        canvas.drawText(text,width/2-mRect.width()/2,mRect.height(),mPaint);
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        return gestureDetector.onTouchEvent(event);
     }
 }

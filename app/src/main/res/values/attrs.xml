@@ -2,9 +2,9 @@
 <resources>
 
     <declare-styleable name="SimpleTextView">
-        <attr name="textSize" format="dimension"/>
-        <attr name="textColor" format="color"/>
+        <attr name="simpleTextSize" format="dimension"/>
+        <attr name="simpleTextColor" format="color"/>
         <attr name="backgroundColor" format="color"/>
-        <attr name="text" format="string"/>
+        <attr name="simpleText" format="string"/>
     </declare-styleable>
 </resources>

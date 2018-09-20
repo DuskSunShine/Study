@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#dc9271"
+    android:orientation="vertical"
     tools:context="com.hhjt.study.custom_view.SafeViewActivity">
 
     <com.hhjt.study.custom_view.SafeView
@@ -16,27 +17,33 @@
 
     <com.hhjt.study.custom_view.TimeView
         android:id="@+id/timeView"
-        app:clockDialColor="#040b13"
-        app:clockDialStrokeWidth="2dp"
-        app:clockDialFillType="stroke"
-        app:scaleColor="#121212"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         app:centerPointRadius="5dp"
-        app:scaleStrokeWidth="2dp"
-        app:textColor="#f1f904"
-        app:textSize="14sp"
-        app:littleTextColor="#01a5f9"
-        app:littleTextSize="12sp"
-        app:secondIndicatorColor="#f50505"
-        app:secondIndicatorWidth="2dp"
-        app:minIndicatorColor="#3be109"
-        app:minIndicatorWidth="3dp"
+        app:clockDialColor="#040b13"
+        app:clockDialFillType="stroke"
+        app:clockDialStrokeWidth="2dp"
+        app:hScaleHeight="20dp"
         app:hourIndicatorColor="#ee06f7"
         app:hourIndicatorWidth="4dp"
-        app:hScaleHeight="20dp"
+        app:littleTextColor="#01a5f9"
+        app:littleTextSize="12sp"
         app:mScaleHeight="12dp"
-        app:sScaleHeight="6dp"
+        app:minIndicatorColor="#3be109"
+        app:minIndicatorWidth="3dp"
         app:paddingOffset="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        app:sScaleHeight="6dp"
+        app:scaleColor="#121212"
+        app:scaleStrokeWidth="2dp"
+        app:secondIndicatorColor="#f50505"
+        app:secondIndicatorWidth="2dp"
+        app:textColor="#f1f904"
+        app:textSize="14sp" />
 
-</android.support.constraint.ConstraintLayout>
+    <com.hhjt.study.custom_view.SimpleTextView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:simpleText="@string/app_name"
+        app:simpleTextColor="@color/colorPrimary"
+        app:backgroundColor="#33329383"/>
+</LinearLayout>

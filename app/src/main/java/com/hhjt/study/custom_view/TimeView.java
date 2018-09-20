@@ -207,8 +207,8 @@ public class TimeView extends View{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        width=MeasureSpec.getSize(widthMeasureSpec);
-        height=MeasureSpec.getSize(heightMeasureSpec);
+       width=MeasureSpec.getSize(widthMeasureSpec);
+       height=MeasureSpec.getSize(heightMeasureSpec);
         setMeasuredDimension(width,height);
     }
 

@@ -2,9 +2,11 @@ package com.hhjt.study.custom_view;
 
 import android.content.res.Configuration;
 import android.os.MessageQueue;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
+import android.widget.TextView;
 
 
 import com.hhjt.study.R;

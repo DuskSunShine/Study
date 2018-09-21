@@ -7,4 +7,13 @@
         <attr name="backgroundColor" format="color"/>
         <attr name="simpleText" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="CircleView">
+        <attr name="srcBitmap" format="reference"/>
+        <attr name="tileMode" format="integer">
+            <enum name="repeat" value="0"/>
+            <enum name="clamp" value="1"/>
+            <enum name="mirror" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

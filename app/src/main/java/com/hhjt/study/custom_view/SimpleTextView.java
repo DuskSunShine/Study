@@ -81,13 +81,19 @@ public class SimpleTextView extends View{
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         if (widthMode==MeasureSpec.EXACTLY){
             this.width=width;
-        }else {//warp_content没有设置一个具体的值，就初始化一个值
-            this.width= mRect.width();
+        }else if (widthMode==MeasureSpec.AT_MOST){
+            int i = mRect.width();
+            this.width=Math.min(i,this.width);
         }
         if (heightMode==MeasureSpec.EXACTLY){
+            //父容器已经检测出子View所需要的精确大小。
+            //在该模式下，View的测量大小即为SpecSize。
             this.height=height;
-        }else {//warp_content
-            this.height= mRect.height()+mRect.bottom;
+        }else if (heightMode==MeasureSpec.AT_MOST){
+            //父容器未能检测出子View所需要的精确大小，
+            // 但是指定了一个可用大小即specSize在该模式下，View的测量大小不能超过SpecSize。
+            int i = mRect.height() + mRect.bottom;
+            this.height=Math.min(i,height);
         }
         setMeasuredDimension(this.width,this.height);
 

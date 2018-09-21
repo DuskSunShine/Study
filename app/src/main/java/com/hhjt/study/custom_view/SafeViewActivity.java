@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -51,7 +52,7 @@ public class SafeViewActivity extends AppCompatActivity {
             list.add(user);
         }
         long l1 = System.currentTimeMillis();
-        Logg.e("时间",(l1-l)/1000);
+        Logg.e("时间",(l1-l)/1000+""+list.get(0));
         //CrashReport.testJavaCrash();
         String s="0.9.0";
         String s1="1.0.0";

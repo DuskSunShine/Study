@@ -16,4 +16,16 @@
             <enum name="mirror" value="2"/>
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="LabelView">
+        <attr name="rectBorder" format="dimension"/>
+        <attr name="backColor" format="color"/>
+        <attr name="style" format="integer">
+            <enum name="fill" value="0"/>
+            <enum name="stroke" value="1"/>
+        </attr>
+        <attr name="radius" format="dimension"/>
+        <attr name="labTextSize" format="dimension"/>
+        <attr name="labTextColor" format="dimension"/>
+    </declare-styleable>
 </resources>

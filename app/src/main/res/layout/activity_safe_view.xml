@@ -63,6 +63,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcBitmap="@drawable/we"
-        app:tileMode="repeat"/>
+        app:tileMode="repeat"
+        android:visibility="gone"/>
+    <com.hhjt.study.custom_view.LabelLayout
+        android:id="@+id/labLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
+    </com.hhjt.study.custom_view.LabelLayout>
+    <com.hhjt.study.custom_view.LabelView
+        android:id="@+id/lab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rectBorder="4dp"
+        app:labTextSize="14sp"
+        app:backColor="#e6dc22"
+        app:style="fill"
+        app:radius="4dp"/>
 </LinearLayout>

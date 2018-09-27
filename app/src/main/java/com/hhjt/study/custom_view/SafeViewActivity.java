@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 
 import com.hhjt.study.R;
+import com.hhjt.study.annotation.FindId;
 import com.hhjt.study.retrofit.User;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
@@ -22,6 +23,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.TreeMap;
@@ -33,13 +35,23 @@ import me.logg.Logg;
 
 public class SafeViewActivity extends AppCompatActivity {
     private LinkedList<String> linkedList=new LinkedList<>();
-
+    private HashMap<Integer,List<String>> hashMap=new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_safe_view);
         SafeView safeView=findViewById(R.id.safe);
         TimeView timeView=findViewById(R.id.timeView);
+        LabelLayout labLayout=findViewById(R.id.labLayout);
+        LabelView lab=findViewById(R.id.lab);
+        ArrayList<String> arrayList=new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            arrayList.add("name中国科大夫"+i);
+        }
+        hashMap.put(1,arrayList);
+        lab.setData(hashMap);
+
+        labLayout.showLab(arrayList);
         //safeView.setText("hahahha");
         //safeView.start(10,5000);
         linkedList.add("new one");

@@ -18,7 +18,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LabelLayout extends ViewGroup {
     private int verticalSpacing = 20;
     private int labId=0;
-    private MarginLayoutParams marginLayoutParams;
     public LabelLayout(Context context) {
         this(context, null);
     }
@@ -99,7 +98,7 @@ public class LabelLayout extends ViewGroup {
                 int childMeasuredHeight = child.getMeasuredHeight();
 
                 LayoutParams childLayoutParams = child.getLayoutParams();
-                marginLayoutParams = (MarginLayoutParams) childLayoutParams;
+                MarginLayoutParams  marginLayoutParams = (MarginLayoutParams) childLayoutParams;
                 int childLeftMargin = marginLayoutParams.leftMargin;
                 int childTopMargin = marginLayoutParams.topMargin;
                 int childRightMargin = marginLayoutParams.rightMargin;
@@ -136,8 +135,8 @@ public class LabelLayout extends ViewGroup {
     }
 
     @Override
-    protected LayoutParams generateLayoutParams(LayoutParams p) {
-        return marginLayoutParams;
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new MarginLayoutParams(getContext(),attrs);
     }
 
     public void showLab(ArrayList<String> charSequences){
@@ -146,7 +145,7 @@ public class LabelLayout extends ViewGroup {
              textView= new TextView(getContext());
              textView.setId(new AtomicInteger(++labId).get());
              textView.setText(charSequences.get(i));
-            addView(textView,new MarginLayoutParams(20,20));
+            addView(textView,new MarginLayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
         }
 
     }

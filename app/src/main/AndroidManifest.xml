@@ -26,7 +26,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
         <activity android:name=".design_pattern.factory.FactoryActivity" />
         <activity android:name=".design_pattern.strategy.StrategyActivity" />
         <activity android:name=".custom_view.SafeViewActivity">

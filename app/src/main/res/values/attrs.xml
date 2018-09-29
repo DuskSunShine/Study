@@ -28,4 +28,11 @@
         <attr name="labTextSize" format="dimension"/>
         <attr name="labTextColor" format="dimension"/>
     </declare-styleable>
+
+
+    <declare-styleable name="VFanView">
+        <attr name="color" format="color"/>
+        <attr name="vFanLeafLength" format="dimension"/>
+        <attr name="duration" format="integer"/>
+    </declare-styleable>
 </resources>

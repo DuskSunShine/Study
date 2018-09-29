@@ -1,6 +1,8 @@
 package com.hhjt.study.custom_view;
 
+import android.arch.persistence.room.RoomDatabase;
 import android.content.res.Configuration;
+import android.os.Handler;
 import android.os.MessageQueue;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +28,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Stack;
 import java.util.TreeMap;
 import java.util.stream.Stream;
 
@@ -43,6 +46,8 @@ public class SafeViewActivity extends AppCompatActivity {
         SafeView safeView=findViewById(R.id.safe);
         TimeView timeView=findViewById(R.id.timeView);
         LabelLayout labLayout=findViewById(R.id.labLayout);
+        VFanView vFanView=findViewById(R.id.vFan);
+        vFanView.start();
         LabelView lab=findViewById(R.id.lab);
         ArrayList<String> arrayList=new ArrayList<>();
         for (int i = 0; i < 10; i++) {

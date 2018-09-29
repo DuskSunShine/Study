@@ -67,8 +67,8 @@
         android:visibility="gone"/>
     <com.hhjt.study.custom_view.LabelLayout
         android:id="@+id/labLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="gone">
 
     </com.hhjt.study.custom_view.LabelLayout>
@@ -80,5 +80,13 @@
         app:labTextSize="14sp"
         app:backColor="#e6dc22"
         app:style="fill"
-        app:radius="4dp"/>
+        app:radius="4dp"
+        android:visibility="gone"/>
+    <com.hhjt.study.custom_view.VFanView
+        android:id="@+id/vFan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:vFanLeafLength="30dp"
+        app:color="@color/colorAccent"
+        app:duration="1000"/>
 </LinearLayout>

@@ -2,7 +2,7 @@ package com.hhjt.study.mvp.view;
 
 import com.hhjt.study.retrofit.InitData;
 
-/**
+/**view操作的抽象
  * Created by SCY on 2018/9/27 at 15:41.
  */
 

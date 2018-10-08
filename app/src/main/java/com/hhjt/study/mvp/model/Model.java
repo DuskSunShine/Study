@@ -16,7 +16,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-/**
+/**数据的来源，数据的获取操作
  * Created by SCY on 2018/9/27 at 15:48.
  */
 

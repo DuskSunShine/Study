@@ -13,7 +13,7 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
-/**
+/**相关逻辑的操作，控制
  * Created by SCY on 2018/9/27 at 15:44.
  */
 

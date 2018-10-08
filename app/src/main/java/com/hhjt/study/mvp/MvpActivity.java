@@ -30,37 +30,37 @@ public class MvpActivity extends AppCompatActivity implements BaseView{
 
     @Override
     public void showLoading() {
-        Logg.v("showLoading");
+        Logg.e("showLoading");
     }
 
     @Override
     public void cancelLoading() {
-        Logg.v("cancelLoading");
+        Logg.e("cancelLoading");
     }
 
     @Override
     public void showData(InitData initData) {
-        Logg.v("showData:"+initData.getData().get(0).toString());
+        Logg.e("showData:"+initData.getData().get(0).toString());
     }
 
 
     @Override
     public void showErrorMessage() {
-
+        Logg.e("showErrorMessage");
     }
 
     @Override
     public void onFailue() {
-
+        Logg.e("onFailue");
     }
 
     @Override
     public void onSuccess() {
-
+        Logg.e("onSuccess");
     }
 
     @Override
     public void showFailueMessage() {
-
+        Logg.e("showFailueMessage");
     }
 }

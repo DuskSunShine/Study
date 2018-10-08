@@ -19,7 +19,7 @@ import me.logg.config.LoggConfiguration;
  */
 
 public class App extends Application {
-    public static final String BASEURL = "http://192.168.2.5:9999";
+    public static final String BASEURL = "http://192.168.2.113:9999";
     private IDatabase database;
     private static  App app;
     @Override

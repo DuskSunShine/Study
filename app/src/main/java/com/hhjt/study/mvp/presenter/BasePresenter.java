@@ -9,6 +9,8 @@ import com.hhjt.study.mvp.model.Model;
 import com.hhjt.study.mvp.view.BaseView;
 import com.hhjt.study.retrofit.InitData;
 
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -25,7 +27,6 @@ public class  BasePresenter<V extends BaseView>{
 
     public BasePresenter() {
     }
-
     public void detachView(){
         this.baseView=null;
     }
@@ -36,19 +37,37 @@ public class  BasePresenter<V extends BaseView>{
 
 
     @SuppressLint("CheckResult")
-    public void getsData(){
+    public void getDataFromApi(){
         baseView.showLoading();
-        Model.getdata().subscribe(new Consumer<InitData>() {
+        Model.getDataFromAPi().subscribe(new Observer<InitData>() {
             @Override
-            public void accept(InitData initData) throws Exception {
+            public void onSubscribe(Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(InitData initData) {
                 if (initData.getCode()== null){
+                    baseView.showFailueMessage();
+                    baseView.onFailue();
                     Toast.makeText(App.getApp(),"失败",Toast.LENGTH_SHORT).show();
                     baseView.cancelLoading();
                     return;
                 }
                 if (isAttachedView()){
+                    baseView.onSuccess();
                     baseView.showData(initData);
                 }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                baseView.showErrorMessage();
+            }
+
+            @Override
+            public void onComplete() {
+
             }
         });
     }

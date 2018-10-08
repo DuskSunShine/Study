@@ -98,7 +98,7 @@ public class VFanView extends View {
         if (mode == MeasureSpec.EXACTLY) {        //确定大小,希望是measureSize
             result = measureSize;
         } else {
-            result = (int) (VFanLeafLength/Math.sin(45.0));
+            result = (int) (VFanLeafLength/Math.sin(45.0))*2;
             if (mode == MeasureSpec.AT_MOST) {//最大大小,希望是measureSize
                 result = Math.min(result, measureSize);
             }

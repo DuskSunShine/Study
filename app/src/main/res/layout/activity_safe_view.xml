@@ -12,14 +12,14 @@
         android:id="@+id/safe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:text="防御次数"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:text="防御次数" />
 
     <com.hhjt.study.custom_view.TimeView
-        android:visibility="gone"
         android:id="@+id/timeView"
         android:layout_width="240dp"
         android:layout_height="240dp"
+        android:visibility="gone"
         app:centerPointRadius="5dp"
         app:clockDialColor="#040b13"
         app:clockDialFillType="stroke"
@@ -44,27 +44,30 @@
     <com.hhjt.study.custom_view.SimpleTextView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        app:simpleText="@string/app_name"
         android:visibility="gone"
-        app:simpleTextColor="@color/colorPrimary"
-        app:backgroundColor="#33329383"/>
+        app:backgroundColor="#33329383"
+        app:simpleText="@string/app_name"
+        app:simpleTextColor="@color/colorPrimary" />
+
     <com.hhjt.study.custom_view.BottomView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="fdfdfd"/>
+            android:text="fdfdfd" />
 
     </com.hhjt.study.custom_view.BottomView>
 
     <com.hhjt.study.custom_view.CircleView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:srcBitmap="@drawable/we"
-        app:tileMode="repeat"
-        android:visibility="gone"/>
+        app:tileMode="repeat" />
+
     <com.hhjt.study.custom_view.LabelLayout
         android:id="@+id/labLayout"
         android:layout_width="match_parent"
@@ -72,21 +75,32 @@
         android:visibility="gone">
 
     </com.hhjt.study.custom_view.LabelLayout>
+
     <com.hhjt.study.custom_view.LabelView
         android:id="@+id/lab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:rectBorder="4dp"
-        app:labTextSize="14sp"
+        android:visibility="gone"
         app:backColor="#e6dc22"
-        app:style="fill"
+        app:labTextSize="14sp"
         app:radius="4dp"
-        android:visibility="gone"/>
+        app:rectBorder="4dp"
+        app:style="fill" />
+
     <com.hhjt.study.custom_view.VFanView
         android:id="@+id/vFan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:vFanLeafLength="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:color="@color/colorAccent"
-        app:duration="1000"/>
+        app:duration="1000"
+        app:vFanLeafLength="30dp" />
+
+    <com.hhjt.study.custom_view.BezierView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent" />
+    <com.hhjt.study.custom_view.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

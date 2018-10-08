@@ -22,7 +22,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class Model {
 
-    public static Observable<InitData> getdata(){
+    public static Observable<InitData> getDataFromAPi(){
         return Observable.interval(1, 5, TimeUnit.SECONDS)
                 .flatMap(new Function<Long, ObservableSource<InitData>>() {
                     @Override

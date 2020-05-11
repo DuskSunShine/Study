@@ -16,3 +16,4 @@ public class SafeViewActivity extends AppCompatActivity {
         safeView.start(2,5000);
     }
 }
+

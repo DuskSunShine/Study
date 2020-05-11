@@ -23,7 +23,7 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE id = :userId")
     LiveData<User> load(String userId);
 
-    @Query("select *from user")
+    @Query("select * from user")
     LiveData<List<User>> getAll();
 
     @Delete

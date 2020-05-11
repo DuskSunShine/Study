@@ -7,10 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.hhjt.study.IViewModel.StudyViewModel;
 import com.hhjt.study.design_pattern.factory.FactoryActivity;
+import com.hhjt.study.javas.Animal;
+import com.hhjt.study.javas.Dog;
 import com.hhjt.study.retrofit.InitData;
 import com.hhjt.study.retrofit.User;
 
@@ -26,15 +29,41 @@ public class MainActivity extends AppCompatActivity {
     private TextView text;
     private TextView textView;
     private TextView textView2;
+    private Button button6;
     private int count=0;
     List<User> users;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         text=findViewById(R.id.text);
         textView=findViewById(R.id.textView);
         textView2=findViewById(R.id.textView2);
+        button6=findViewById(R.id.button6);
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        Animal animal=new Dog();
+        ((Dog) animal).setColor("d");
+        Dog dog=new Dog();
+        dog.setAge(1);
+
+
+
+        String str = "hhhabc银鞍照白马 飒沓如流星"; //将字符串转换为byte数组，并打印输出
+        String s = str + "66666";
+        byte[] bytes = str.getBytes();
+        for (int i = 0; i < bytes.length; i++) {
+            Logg.e("=======",bytes[i]);
+        }
+        Logg.e("======111",new String(bytes));
 
         studyViewModel = ViewModelProviders.of(this)
                 .get(StudyViewModel.class);
